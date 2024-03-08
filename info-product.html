@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="./css-doan.css" />
+    <link href="./fontawesome-free-5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <title>Quản lý sản phẩm</title>
+
+</head>
+
+<body>
+
+    <input type="checkbox" id="check">
+    <label class="check-label" for="check">
+        <i class="fas fa-bars" id="btn"></i>
+        <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="slidebar">
+        <header class="slidebar-header">DTTT</header>
+        <ul>
+            <li><a onclick="adminLogin()" href="#">Trang chủ</a></li>
+            <li><a href="#">Quản lý danh mục sản phẩm</a></li>
+            <li><a href="info-detail-product.html">Quản lý chi tiết<br/> sản phẩm</a></li>
+            <li><a href="info-order.html">Quản lý đơn hàng</a></li>
+            <li><a href="info-user.html">Quản lý khách hàng</a></li>
+        </ul>
+    </div>
+    <section class="infoProduct">
+        <div class="infoProduct-left">
+            <h2>THÔNG TIN SẢN PHẨM</h2>
+            <table class="infoProduct-table" id="infoProduct-table">
+                <!---jvs-->
+            </table>
+        </div>
+        <div class="infoProduct-right">
+            <div class="infoProduct-right-top">
+                <h2>TÌM KIẾM SẢN PHẨM</h2>
+                <input onkeyup="findProduct()" type="text" id="find-name-product" placeholder="Tên sản phẩm">
+                <!-- <input onkeyup="findProduct()" type="text" id="find-trademark-product" placeholder="Tên thương hiệu"> -->
+                <select onchange="findProduct()" id="find-trademark-product">
+                    <!-- <option value="" selected>Chọn thương hiệu</option> -->
+                    <!-- <option></option> -->
+                </select>            
+            </div>
+            <div class="infoProduct-right-bottom">
+                <h2>THÊM SẢN PHẨM</h2>
+                <input class="input-add-product" type="text" name="txtIdproduct" id="id-product" placeholder="Mã sản phẩm">
+                <span style="margin-top:-35px" class="error" id="error-add-id-product"></span> 
+
+                <input class="input-add-product" type="text" name="txtNameproduct" id="name-product" placeholder="Tên sản phẩm">
+                <span style="margin-top:-35px"  class="error" id="error-add-name-product"></span>
+
+                <select class="input-add-product" id="trademark-product">
+                    <!-- <option value="" selected>Chọn thương hiệu</option> -->
+                    <!-- <option></option> -->
+                </select> 
+                <span style="margin-top:-35px"  class="error" id="error-add-trademark-product"></span> 
+
+                <input class="input-add-product" type="file" name="txtImg" id="img-product" accept=".jpg, .png" multiple>
+                <!-- <img style="width:30%; margin-bottom: 20px; margin-top: -30px" id="imgProduct" src="" alt=""> -->
+                <span style="margin-top:-35px"  class="error" id="error-add-img-product"></span> 
+
+                <input class="input-add-product" type="text" name="txtMoney" id="money-product" placeholder="Giá">
+                <span style="margin-top:-35px"  class="error" id="error-add-money-product"></span> 
+
+                <div class="infoProduct-right-submit">
+                    <button type="submit" id="insert-product" onclick="saveProduct()">THÊM</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="edit">
+        <form class="edit-form">
+            <div class="edit-product-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditProduct()">X</a></div>
+                <h2>THAY ĐỔI THÔNG TIN SẢN PHẨM</h2>
+
+                <label>Mã sản phẩm</label>
+                <input id="editIdProduct" type="text" placeholder="Mã sản phẩm">
+                <span class="error" id="error-id-product"></span>
+
+                <label>Tên sản phẩm</label>
+                <input id="editNameProduct" type="text" placeholder="Tên sản phẩm">
+                <span class="error" id="error-name-product"></span>
+
+                <label>Tên thương hiệu</label>
+                <select id="editTrademarkProduct">
+                    <!-- <option value="" selected>Chọn thương hiệu</option> -->
+                    <!-- <option></option> -->
+                </select>
+                <span class="error" id="error-trademark-product"></span> 
+
+                <label>Giá sản phẩm</label>
+                <input id="editMoneyProduct" type="text" placeholder="Giá">
+                <span class="error" id="error-money-product"></span> 
+
+                <div class="edit-form-submit">
+                    <button type="button" id="edit-product" onclick="editProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </section>
+    <section class="edit">
+        <form class="edit-form">
+            <div class="edit-product-img-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditProductImg()">X</a></div>
+                <h2>THAY ĐỔI HÌNH ẢNH</h2>
+
+                <input id="editImgProduct" type="file" accept=".jpg, .png" multiple>
+                <span class="error"></span> 
+
+                <div class="edit-img-submit">
+                    <button type="button" id="edit-product-img" onclick="editImgOfProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script src="./js-project.js"></script>
+<script>
+    window.onload = function()
+    {
+        renderListProduct()
+        optionTrademark();
+    }
+</script>
+</html>

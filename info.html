@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="./css-doan.css" />
+    <link href="./fontawesome-free-5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <title>DTTT</title>
+    <script>
+        var bien=0;
+    </script>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="./img/DTTT.png">
+    </div>
+    <input class="clickmenu" type="button" value="MENU" onclick="anMenu();"/>
+    <header class="main-header">
+
+        <div class="menu">
+                <li><a href="main.html">HOME</a></li>
+                <li><a>SẢN PHẨM</a>
+                    <ul id="submenu" class="submenu">
+                        <!-- jvssubmenu -->
+                    </ul>
+                </li>
+                <li><a class="link" href="">GIỚI THIỆU</a></li>
+                <li><a class="link" href="register.html">ĐĂNG KÝ</a></li>
+                <li id="disableLogin"><a class="link" href="login.html">ĐĂNG NHẬP</a></li>
+                <li style="display: none" onclick="logout()" id="logout"><a class="link" href="#">ĐĂNG XUẤT</a></li>
+                <li style="display: none" id="enableLogin"><a class="link" class="link" onclick="nameUser()" href="#"><i class="far fa-user"></i><h3 style="display: inline-block; margin-left: 10px" id="usernameLogin"></h3></a></li>
+                <li><input type="text" id="find" placeholder="Tìm kiếm..." /><i onclick="findProductMain()" class="fas fa-search"></i></li>
+                <li><a class="fas fa-cart-plus" href="#" onclick="onclickCart()"></a></li>
+        </div>
+    </header>
+    <!----------------info-------------------------->
+    <section class="info">
+        <div class="info-top">
+            <img src="img/info.png">
+        </div>
+        <div class="info-content">
+            <div class="info-1 row">
+                <div class="info-1-left">
+                    <img src="img/info-1.gif">
+                </div>
+                <div class="info-1-right">
+                    <p class="text-info">Bạn đang thiếu tự tin? Bạn có những phong cách riêng? Nhẹ nhàng hay cá tính?
+                        <br><br> DTTT với nhiều lựa chọn chất lượng sẽ giúp bạn trở nên đặc biệt hơn trong cuộc sống
+                        này. Từ đó, bạn sẽ thêm tự tin hơn với chính mình để cảm nhận nhịp điệu cuộc sống thật mới mẻ,
+                        hạnh phúc.</p>
+                </div>
+            </div>
+            <div class="info-2 row">
+                <div class="info-2-left">
+                    <p class="text-info">Đồng hành cùng những thương hiệu hàng đầu thế giới và những dòng son mới nhất,
+                        hấp dẫn nhất cùng nhiều bộ sưu tập màu son phong phú mang đến cho bạn nhiều lựa chọn cho đôi môi
+                        của mình. <br><br> Chúng tôi đảm bảo về cả chất lượng và giá thành cho bạn thêm yên tâm khi cùng
+                        DTTT trải nghiệm cuộc sống đầy tự tin với đôi môi quyến rũ.</p>
+                </div>
+                <div class="info-2-right">
+                    <img src="img/info-2.gif">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!----------------footer-------------------------->
+    <section class="footer">
+        <p id="thongtin">Đăng ký nhận thông tin mới nhất từ DTTT</p>
+        <input type="text" placeholder="Nhập email..." />
+        <div></div>
+        <br />
+        <p>Công ty TNHH DTTT(Việt Nam)</p>
+        <p>Địa chỉ: 369 Cách Mạng Tháng Tám, phường 12, quận 10, Thành phố Hồ Chí Minh, Việt Nam</p>
+        <p>Liên lạc: 0999 666 333</p>
+        <p>Email: dttt@gmail.com</p>
+        <br />
+        <p style="font-size: 8px">COPYRIGHTS © 2021 BY DTTT</p>
+    </section>
+
+</body>
+<script src="./js-project.js"></script>
+<script>
+    window.onload = function()
+    {
+        trademarkMenu();
+        statusLogin();
+        innerUsernameLogin();
+    }
+</script>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="./css-doan.css" />
+    <link href="./fontawesome-free-5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <title>Đồ án</title>
+    <script>
+        var bien=0;
+    </script>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="./img/DTTT.png" />
+    </div>
+    <input class="clickmenu" type="button" value="MENU" onclick="anMenu();"/>
+    <header class="main-header">
+        <div class="menu">
+            <li><a href="main.html">HOME</a></li>
+            <li><a href="">SẢN PHẨM</a>
+                <ul id="submenu" class="submenu">
+                    <!-- jvssubmenu -->
+                </ul>
+            </li>
+            <li><a class="link" href="info.html">GIỚI THIỆU</a></li>
+            <li><a class="link" href="register.html">ĐĂNG KÝ</a></li>
+            <li id="disableLogin"><a class="link" href="login.html">ĐĂNG NHẬP</a></li>
+            <li style="display: none" onclick="logout()" id="logout"><a class="link" href="#">ĐĂNG XUẤT</a></li>
+            <li style="display: none" id="enableLogin"><a class="link" onclick="nameUser()" href="#"><i class="far fa-user"></i><h3 style="display: inline-block; margin-left: 10px" id="usernameLogin"></h3></a></li>
+            <li><input type="text" id="find" placeholder="Tìm kiếm..." /><i onclick="findProductMain()" class="fas fa-search"></i></li>
+            <li><a class="fas fa-cart-plus" href="#" onclick="onclickCart()"></a></li>
+        </div>
+    </header>
+    <!----------------delivery--------------------------->
+    <section class="cart">
+        <div class="container">
+            <div class="cart-top-wrap">
+                <div class="cart-top">
+                    <div class="delivery-top-cart cart-top-item">
+                        <i class="fas fa-cart-plus"></i>
+                    </div>
+                    <div class="delivery-top-address cart-top-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="pay-top-pay cart-top-item">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="delivery row">
+                <div class="delivery-left">
+                    <form method="post" action="pay.html">
+                        <h3>Thông tin giao hàng</h3>
+                        <div class="delivery-left-content row">
+                            <div class="delivery-left-content-item">
+                                <div>
+                                    <label for="name">Họ và tên</label>
+                                    <input id="fullname-delivery" type="text">
+                                </div>
+                                <div>
+                                    <label for="phone">Điện thoại</label>
+                                    <input id="phone-delivery" type="text">
+                                </div>
+                                <div class="option-wrapper">
+                                    <label class="option-label" for="province">Thành phố/Tỉnh<span style="display: initial; margin-left: 10px" class="error" id="error-province"></span></label>
+                                    
+                                    <input id="province-delivery" type="text">
+                                </div>
+                                <div class="option-wrapper">
+                                    <label class="option-label" for="district">Quận/Huyện<span style="display: initial; margin-left: 10px" class="error" id="error-district"></span></label>
+                                    
+                                    <input id="district-delivery" type="text">         
+                                </div>
+                                <div class="option-wrapper">
+                                    <label class="option-label" for="ward">Phường/Xã<span style="display: initial; margin-left: 10px" class="error" id="error-ward"></span></label>
+                                    
+                                    <input id="ward-delivery" type="text">                                    
+                                </div>
+                                <div>
+                                    <label for="address">Địa chỉ<span style="display: initial; margin-left: 10px" class="error" id="error-address"></span></label>
+                                    
+                                    <input id="address-delivery" type="text">                                
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="cart-content-right">
+                    <div class="pay-left-content-h3">
+                        <h3>Phương thức thanh toán</h3>
+                    </div>
+                    <div class="pay-left-content">
+                        <span style="margin-left: 30px" class="error" id="error-pay"></span>
+                        <div class="pay-left-item">
+                            <input type="radio" name="method-payment" id="1" value="Thanh toán khi giao hàng">
+                            <label><i class="fas fa-money-bill-wave"></i></label>
+                            <label>Thanh toán khi giao hàng</label>
+                        </div>
+                        <div class="pay-left-item">
+                            <input type="radio" name="method-payment" id="2" value="Chuyển khoản qua ngân hàng">
+                            <label><i class="fas fa-money-check-alt"></i></label>
+                            <label>Chuyển khoản qua ngân hàng</label>
+                        </div>
+                        <div class="pay-left-item">
+                            <p>Công ty DTTT</p>
+                            <p>Ngân hàng Techcombank Chi nhánh Tân Bình</p>
+                            <p>STK: 19131234987654</p>
+                        </div>
+                        <div class="pay-left-item">
+                            <input type="radio" name="method-payment" id="3" value="Momo">
+                            <label><img class='./img/img-momo'
+                                src="https://hstatic.net/0/0/global/design/seller/image/payment/momo.svg" /></label>
+                            <label>Momo</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="submitOrder">
+            <button onclick="saveDetailOrder(), orderClosing()" class="submitDelivery" type="button" >THANH TOÁN VÀ GIAO HÀNG</button>
+        </div>
+    </section>
+    
+    <!----------------footer-------------------------->
+    <section class="footer">
+        <p id="thongtin">Đăng ký nhận thông tin mới nhất từ DTTT</p>
+        <input type="text" placeholder="Nhập email..." />
+        <div></div>
+        <br />
+        <p>Công ty TNHH DTTT(Việt Nam)</p>
+        <p>Địa chỉ: 369 Cách Mạng Tháng Tám, phường 12, quận 10, Thành phố Hồ Chí Minh, Việt Nam</p>
+        <p>Liên lạc: 0999 666 333</p>
+        <p>Email: dttt@gmail.com</p>
+        <br />
+        <p style="font-size: 8px">COPYRIGHTS © 2021 BY DTTT</p>
+    </section>
+
+</body>
+<script src="./js-project.js"></script>
+<script>
+    window.onload = function () {
+        trademarkMenu();
+        statusLogin();
+        deliveryInfo();
+        innerUsernameLogin();
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</html>

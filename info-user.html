@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="./css-doan.css" />
+    <link href="./fontawesome-free-5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <title>DTTT</title>
+
+</head>
+
+<body onload="renderListUser()">
+
+    <input type="checkbox" id="check">
+    <label class="check-label" for="check">
+        <i class="fas fa-bars" id="btn"></i>
+        <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="slidebar">
+        <header class="slidebar-header">DTTT</header>
+        <ul>
+            <li><a onclick="adminLogin()" href="#">Trang chủ</a></li>
+            <li><a href="info-product.html">Quản lý danh mục sản phẩm</a></li>
+            <li><a href="info-detail-product.html">Quản lý chi tiết sản phẩm</a></li>
+            <li><a href="info-order.html">Quản lý đơn hàng</a></li>
+            <li><a href="#">Quản lý khách hàng</a></li>
+        </ul>
+    </div>
+    <section class="infoUser">
+        <div class="infoUser-left">
+            <h2>THÔNG TIN KHÁCH HÀNG</h2>
+            <table class="infoUser-table" id="infoUser-table">
+
+            </table>
+        </div>
+        <div class="infoUser-right">
+            <h2 class="infoUser-right-header">TÌM KIẾM KHÁCH HÀNG</h2>
+            <input onkeyup="findUser()" type="text" name="txtFullname" id="find-fullname" placeholder="Tên khách hàng">
+            <input onkeyup="findUser()" type="text" name="txtUsername" id="find-username" placeholder="Tên tài khoản">
+        </div>
+    </section>
+    <section class="edit">
+        <form class="edit-form">
+            <div class="edit-user-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditUser()">X</a></div>
+                <h2>THAY ĐỔI THÔNG TIN KHÁCH HÀNG</h2>
+                <label style="margin-right: 45px">Họ tên</label>
+                <input id="editFullname" type="text" placeholder="Họ và tên">
+                <span class="error" id="error-fullname"></span>
+
+                <label>Tên tài khoản</label>
+                <input id="editUsername" type="text" placeholder="Tên tài khoản">
+                <span class="error" id="error-username"></span> 
+
+                <label style="margin-right: 55px">Email</label>
+                <input id="editEmail" type="text" placeholder="Email">
+                <span class="error" id="error-email"></span> 
+                
+                <label>Số điện thoại</label>
+                <input id="editPhone" type="text" placeholder="Số điện thoại">
+                <span class="error" id="error-phone"></span> 
+
+                <label style="margin-right: 25px">Ngày sinh</label>
+                <input id="editBirthday" type="date" placeholder="Ngày sinh">
+                <div class="edit-form-submit">
+                    <button type="button" id="edit-user" onclick="editUser()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script src="./js-project.js"></script>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="./css-doan.css" />
+    <link href="./fontawesome-free-5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <title>Đồ án</title>
+    <script>
+        var bien=0;
+    </script>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="./img/DTTT.png" />
+    </div>
+    <input class="clickmenu" type="button" value="MENU" onclick="anMenu();"/>
+    <header class="main-header">
+        <div class="menu">
+            <li><a class="link" href="main.html">HOME</a></li>
+            <li><a class="link">SẢN PHẨM</a>
+                <ul id="submenu" class="submenu">
+                    <!-- jvssubmenu -->
+                </ul>
+            </li>
+            <li><a class="link" href="info.html">GIỚI THIỆU</a></li>
+            <li><a class="link" href="register.html">ĐĂNG KÝ</a></li>
+            <li id="disableLogin"><a class="link" href="login.html">ĐĂNG NHẬP</a></li>
+            <li style="display: none" onclick="logout()" id="logout"><a class="link" href="#">ĐĂNG XUẤT</a></li>
+            <li style="display: none" id="enableLogin"><a class="link" onclick="nameUser()" href="#"><i
+                        class="far fa-user"></i>
+                    <h3 style="display: inline-block; margin-left: 10px" id="usernameLogin"></h3>
+                </a></li>
+            <li><input type="text" id="find" placeholder="Tìm kiếm..." /><i onclick="findProductMain()"
+                    class="fas fa-search"></i></li>
+            <li><a class="fas fa-cart-plus" href="#"></a></li>
+        </div>
+    </header>
+    <!----------------cart--------------------------->
+    <section class="cart">
+        <div class="container">
+            <div class="cart-top-wrap">
+                <div class="cart-top">
+                    <div class="cart-top-cart cart-top-item">
+                        <i class="fas fa-cart-plus"></i>
+                    </div>
+                    <div class="cart-top-address cart-top-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="cart-top-pay cart-top-item">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="cart-content row">
+                <div class="cart-content-left">
+                    <table id="detail-cart">
+                        <!-- `<tr>
+                            <td>${i}</td>
+                            <td style="width:15%"><img style="width:50%" src='img/${productItem.img}'/></td>
+                            <td>${cartItem.name}</td>
+                            <td>${cartItem.color}</td>
+                            <td>${cartItem.quantity}</td>
+                            <td>${parseInt(cartItem.money) * parseInt(cartItem.quantity)}.000 đ</td>
+                            <td style="text-align:center">
+                                <a href="#" onclick='deleteProductOfCart(${cartID})'><i class="far fa-trash-alt"></i></a>
+                            </td>
+                            </tr>`; -->
+                    </table>
+                </div>
+                <div class="cart-content-right">
+                    <table>
+                        <tr>
+                            <th colspan="2">ĐƠN HÀNG CỦA BẠN</th>
+                        </tr>
+                        <tr>
+                            <td>TỔNG SẢN PHẨM</td>
+                            <td>
+                                <p id="quantityCart-right"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>GIÁ</td>
+                            <td>
+                                <p id="moneyCart-right"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>TỔNG CỘNG</td>
+                            <td>
+                                <p id="totalMoneyCart-right"></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="cart-content-right-button">
+                        <button><a onclick="buyCart()" href="#">MUA NGAY</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!----------------footer-------------------------->
+    <section class="footer">
+        <p id="thongtin">Đăng ký nhận thông tin mới nhất từ DTTT</p>
+        <input type="text" placeholder="Nhập email..." />
+        <div></div>
+        <br />
+        <p>Công ty TNHH DTTT(Việt Nam)</p>
+        <p>Địa chỉ: 369 Cách Mạng Tháng Tám, phường 12, quận 10, Thành phố Hồ Chí Minh, Việt Nam</p>
+        <p>Liên lạc: 0999 666 333</p>
+        <p>Email: dttt@gmail.com</p>
+        <br />
+        <p style="font-size: 8px">COPYRIGHTS © 2021 BY DTTT</p>
+    </section>
+
+</body>
+<script src="./js-project.js"></script>
+<script>
+    window.onload = function()
+    {
+        trademarkMenu();
+        statusLogin();
+        innerUsernameLogin();
+        renderListCart();
+        infoCartRight();
+        cartOfUser();
+    }
+
+</script>
+</html>

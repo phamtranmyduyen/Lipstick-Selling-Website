@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="./css-doan.css" />
+    <link href="./fontawesome-free-5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <title>Quản lý sản phẩm</title>
+
+</head>
+
+<body>
+
+    <input type="checkbox" id="check">
+    <label class="check-label" for="check">
+        <i class="fas fa-bars" id="btn"></i>
+        <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="slidebar">
+        <header class="slidebar-header">DTTT</header>
+        <ul>
+            <li><a onclick="adminLogin()" href="#">Trang chủ</a></li>
+            <li><a href="info-product.html">Quản lý danh mục sản phẩm</a></li>
+            <li><a href="#">Quản lý chi tiết<br /> sản phẩm</a></li>
+            <li><a href="info-order.html">Quản lý đơn hàng</a></li>
+            <li><a href="info-user.html">Quản lý khách hàng</a></li>
+        </ul>
+    </div>
+    <section class="infoProduct">
+        <div class="info-detail-product-left">
+            <div class="infoProduct-left-1">
+                <h2>KHO ẢNH</h2>
+                <table class="img-product-table" id="img-product-table">
+
+                </table>
+
+            </div>
+            <div class="infoProduct-left-2">
+                <h2>BẢNG MÀU</h2>
+                <table class="color-product-table" id="color-product-table">
+
+                </table>
+            </div>
+            <div class="infoProduct-left-3">
+                <h2>CONTENT</h2>
+                <table class="content-product-table" id="content-product-table">
+
+                </table>
+            </div>
+        </div>
+        <div class="infoProduct-right" id="info-detail-product-right">
+            <div class="infoProduct-right-top">
+                <h2>TÌM KIẾM SẢN PHẨM</h2>
+                <input onkeyup="findDetailProduct()" type="text" name="txtFindIdDetailProduct"
+                    id="find-id-detail-product" placeholder="Mã sản phẩm">
+            </div>
+            <div class="infoProduct-right-bottom">
+                <h2>THÊM CHI TIẾT SẢN PHẨM</h2>
+                <input type="text" name="txtIdDetailProduct" id="id-detail-product" placeholder="Mã sản phẩm">
+                <h3>Ảnh</h3>
+                <div class="addImgProduct">
+                    <input type="file" name="txtImg" id="img1-product" accept=".jpg, .png" multiple>
+                    <input type="file" name="txtImg" id="img2-product" accept=".jpg, .png" multiple>
+                    <input type="file" name="txtImg" id="img3-product" accept=".jpg, .png" multiple>
+                    <input type="file" name="txtImg" id="img4-product" accept=".jpg, .png" multiple>
+                    <input type="file" name="txtImg" id="img5-product" accept=".jpg, .png" multiple>
+                </div>
+                <input type="text" name="txtColor" id="color1-product" placeholder="Màu 1">
+                <input type="text" name="txtColor" id="color2-product" placeholder="Màu 2">
+                <input type="text" name="txtColor" id="color3-product" placeholder="Màu 3">
+                <input type="text" name="txtColor" id="color4-product" placeholder="Màu 4">
+                <input type="text" name="txtColor" id="color5-product" placeholder="Màu 5">
+
+                <h3>CONTENT</h3>
+                <div class="contentmain">
+                    <input id="contentImg1Product" type="file">
+                    <span class="error"></span>
+
+                    <input id="contentImg2Product" type="file">
+                    <span class="error"></span>
+
+                    <input id="contentImg3Product" type="file">
+                    <span class="error"></span>
+
+                    <input id="contentImg4Product" type="file">
+                    <span class="error"></span>
+
+                    <input id="contentImg5Product" type="file">
+                    <span class="error"></span>
+
+                    <input id="contentImg6Product" type="file">
+                    <span class="error"></span>
+                </div>
+                <div class="infoProduct-right-submit">
+                    <button type="submit" id="insert-product" onclick="saveDetailProduct()">THÊM</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-detail-product-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditDetailProduct()">X</a></div>
+                <h2 style="margin-top: 20px">THAY ĐỔI THÔNG TIN SẢN PHẨM</h2>
+                <input id="editIdDetailProduct" type="text" placeholder="Mã sản phẩm">
+                <span class="error" id="error-id-detail-product"></span>
+
+                <label>Màu 1</label>
+                <input id="editColor1Product" type="text" placeholder="Màu 1">
+                <span class="error"></span>
+
+                <label>Màu 2</label>
+                <input id="editColor2Product" type="text" placeholder="Màu 2">
+                <span class="error"></span>
+
+                <label>Màu 3</label>
+                <input id="editColor3Product" type="text" placeholder="Màu 3">
+                <span class="error"></span>
+
+                <label>Màu 4</label>
+                <input id="editColor4Product" type="text" placeholder="Màu 4">
+                <span class="error"></span>
+
+                <label>Màu 5</label>
+                <input id="editColor5Product" type="text" placeholder="Màu 5">
+                <span class="error"></span>
+
+                <div class="edit-form-submit">
+                    <button type="button" id="edit-product" onclick="editDetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-img1-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg1DetailProduct()">X</a></div>
+                <h2>THAY ĐỔI HÌNH ẢNH 1</h2>
+
+                <input id="editImg1Product" type="file" accept=".jpg, .png" multiple>
+                <span class="error"></span> 
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg1DetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-img2-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg2DetailProduct()">X</a></div>
+                <h2>THAY ĐỔI HÌNH ẢNH 2</h2>
+
+                <input id="editImg2Product" type="file" accept=".jpg, .png" multiple>
+                <span class="error"></span> 
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg2DetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-img3-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg3DetailProduct()">X</a></div>
+                <h2>THAY ĐỔI HÌNH ẢNH 3</h2>
+
+                <input id="editImg3Product" type="file" accept=".jpg, .png" multiple>
+                <span class="error"></span> 
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg3DetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-img4-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg4DetailProduct()">X</a></div>
+                <h2>THAY ĐỔI HÌNH ẢNH 4</h2>
+
+                <input id="editImg4Product" type="file" accept=".jpg, .png" multiple>
+                <span class="error"></span> 
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg4DetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-img5-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg5DetailProduct()">X</a></div>
+                <h2>THAY ĐỔI HÌNH ẢNH 5</h2>
+
+                <input id="editImg5Product" type="file" accept=".jpg, .png" multiple>
+                <span class="error"></span> 
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg5DetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-content-img1-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg1ContentDetailProduct()">X</a></div>
+                <h2>THAY ĐỔI ẢNH CONTENT 1</h2>
+
+                <input id="editContentImg1Product" type="file">
+                <span class="error"></span>
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg1ContentDetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-content-img2-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg2ContentDetailProduct()">X</a></div>
+                <h2>THAY ĐỔI ẢNH CONTENT 2</h2>
+
+                <input id="editContentImg2Product" type="file">
+                    <span class="error"></span>
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg2ContentDetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-content-img3-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg3ContentDetailProduct()">X</a></div>
+                <h2>THAY ĐỔI ẢNH CONTENT 3</h2>
+
+                <input id="editContentImg3Product" type="file">
+                    <span class="error"></span>
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg3ContentDetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-content-img4-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg4ContentDetailProduct()">X</a></div>
+                <h2>THAY ĐỔI ẢNH CONTENT 4</h2>
+
+                <input id="editContentImg4Product" type="file">
+                    <span class="error"></span>
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg4ContentDetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-content-img5-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg5ContentDetailProduct()">X</a></div>
+                <h2>THAY ĐỔI ẢNH CONTENT 5</h2>
+
+                <input id="editContentImg5Product" type="file">
+                    <span class="error"></span>
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg5ContentDetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="edit">
+        <form class="edit-form">
+            <div class="edit-form-wrapper edit-detail-product-content-img6-form-wrapper">
+                <div class="edit-close"><a href="#" onclick="closeEditImg6ContentDetailProduct()">X</a></div>
+                <h2>THAY ĐỔI ẢNH CONTENT 6</h2>
+
+                <input id="editContentImg6Product" type="file">
+                <span class="error"></span>
+
+                <div class="edit-img-submit">
+                    <button type="button" onclick="editImg6ContentDetailProduct()">THAY ĐỔI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script src="./js-project.js"></script>
+<script>
+    window.onload = function()
+    {
+        renderListDetailProduct()
+    }
+</script>
+</html>

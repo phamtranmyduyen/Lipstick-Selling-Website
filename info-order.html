@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="./css-doan.css" />
+    <link href="./fontawesome-free-5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <title>Quản lý đơn hàng</title>
+
+</head>
+
+<body>
+
+    <input type="checkbox" id="check">
+    <label class="check-label" for="check">
+        <i class="fas fa-bars" id="btn"></i>
+        <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="slidebar">
+        <header class="slidebar-header">DTTT</header>
+        <ul>
+            <li><a onclick="adminLogin()" href="#">Trang chủ</a></li>
+            <li><a href="info-product.html">Quản lý danh mục sản phẩm</a></li>
+            <li><a href="info-detail-product.html">Quản lý chi tiết<br /> sản phẩm</a></li>
+            <li><a href="#">Quản lý đơn hàng</a></li>
+            <li><a href="info-user.html">Quản lý khách hàng</a></li>
+        </ul>
+    </div>
+    <section class="infoOrder">
+        <div class="infoOrder-left">
+            <h2>THÔNG TIN ĐƠN HÀNG</h2>
+            <table class="infoOrder-table" id="infoOrder-table">
+
+            </table>
+
+        </div>
+        <div class="infoOrder-right">
+            <h2>TÌM KIẾM ĐƠN HÀNG</h2>
+            <input onkeyup="findOrder()" type="text" id="find-fullname-order" placeholder="Tên khách hàng">
+            <input onkeyup="findOrder()" type="text" id="find-date-order" placeholder="dd-mm-yyyy">
+            <select onchange="findOrder()" id="find-status-order">
+                <option value="tình trạng">Chọn tình trạng</option>
+                <option value="Chưa xử lý">Chưa xử lý</option>
+                <option value="Đã xử lý">Đã xử lý</option>
+            </select>
+        </div>
+    </section>
+    <section class="detail-order">
+        <form class="detail-order-form">
+            <div class="detail-order-form-wrapper">
+                <div class="edit-close" onclick="closeDetailOrder()"><a href="#">X</a></div>
+                <h2>CHI TIẾT ĐƠN HÀNG</h2>
+                <div class="detailOrder-left">
+                    <h4>Ngày</h4>
+                    <p id="dateOrder"></p>
+                    <h4>Tên khách hàng</h4>
+                    <p id="userOrder"></p>
+                    <h4>Email</h4>
+                    <p id="emailOrder"></p>
+                    <h4>Số điện thoại</h4>
+                    <p id="phoneOrder"></p>
+                    <h4>Địa chỉ</h4>
+                    <p id="addressOrder"></p>
+                    <h4>Phương thức thanh toán</h4>
+                    <p id="payOrder"></p>
+                </div>
+                <div class="detailOrder-right">
+                    <h4>Tên sản phẩm</h4>
+                    <p id="nameOrder"></p>
+                    <h4>Màu</h4>
+                    <p id="colorOrder"></p>
+                    <h4>Số lượng</h4>
+                    <p id="quantityOrder"></p>
+                    <h4>Tổng tiền</h4>
+                    <p id="moneyOrder"></p>
+                    <h4>Trạng thái</h4>
+                    <select onchange="handleOrder()" id="statusOrder">
+                        <option value="Chưa xử lý">Chưa xử lý</option>
+                        <option value="Đã xử lý">Đã xử lý</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script src="./js-project.js"></script>
+<script>
+    window.onload = function () {
+        renderListOrder();
+    }
+</script>
+
+</html>
